@@ -1,0 +1,34 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+project.ext {
+    mainClassName = "com.reference.Application"
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+apply from: "gradle/dependencies.gradle"
+
+jar {
+    baseName = 'app'
+    version = '0.1.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}
