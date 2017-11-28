@@ -36,6 +36,18 @@ jar {
     version = '0.1.0'
 }
 
+task runProducer(type: JavaExec){
+    classpath = sourceSets.main.runtimeClasspath
+    mainClassName = "com.reference.executables.producer.Producer"
+    applicationDefaultJvmArgs = ["-Dserver.port=8993"]
+}
+
+task runConsumer(type: JavaExec){
+    classpath = sourceSets.main.runtimeClasspath
+    mainClassName = "com.reference.executables.consumer.Consumer"
+    applicationDefaultJvmArgs = ["-Dserver.port=8983"]
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '2.14'
 }
