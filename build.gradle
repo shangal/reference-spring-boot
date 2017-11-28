@@ -3,7 +3,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE"
     }
 }
 
@@ -23,6 +24,12 @@ project.ext {
 }
 
 apply from: "gradle/dependencies.gradle"
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-stream-dependencies:Edgware.RELEASE'
+    }
+}
 
 jar {
     baseName = 'app'
